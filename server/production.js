@@ -13,7 +13,14 @@ const __dirname = path.dirname(__filename)
 const app = express()
 const PORT = process.env.PORT || 4000
 
-app.use(cors())
+// Configure CORS to allow requests from your frontend domain
+const corsOptions = {
+  origin: ['https://store.bbrewtech.com', 'http://store.bbrewtech.com', 'http://localhost:3000'],
+  credentials: true,
+  optionsSuccessStatus: 200
+}
+
+app.use(cors(corsOptions))
 app.use(express.json())
 
 // API Routes

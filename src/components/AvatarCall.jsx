@@ -36,7 +36,8 @@ export default function AvatarCall() {
     if (!avatarId) return
     setLoading(true)
     try {
-      const tokenRes = await fetch('/api/session-token', { method: 'POST' })
+      const apiUrl = 'https://ask-jenna-1nphywhx5-haseebs-projects-d04e197f.vercel.app/api/session-token'
+      const tokenRes = await fetch(apiUrl, { method: 'POST' })
       const tokenJson = await tokenRes.json()
       if (!tokenRes.ok) throw new Error(tokenJson?.error || 'Failed to get session token')
       const sessionToken = tokenJson.token
